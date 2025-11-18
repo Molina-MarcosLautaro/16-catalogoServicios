@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
-const Login = ({setUsuarioLogueado}) => {
+const Login = ({ setUsuarioLogueado }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const navegacion = useNavigate()
+  const navegacion = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -18,16 +18,16 @@ const Login = ({setUsuarioLogueado}) => {
       data.email === import.meta.env.VITE_EMAIL &&
       data.password === import.meta.env.VITE_PASSWORD
     ) {
-        //actualizar el state de la sesion del usuario
-        setUsuarioLogueado(true)
-        //mostrar un cartel de bienvenido
-        Swal.fire({
-            title: "Bienvienido Administrador",
-            text: "Ingresando al sistema",
-            icon: "success",
-            //redireccionaria a la papgina del administrador
-        });
-        navegacion('/administrador')
+      //actualizar el state de la sesion del usuario
+      setUsuarioLogueado(true);
+      //mostrar un cartel de bienvenido
+      Swal.fire({
+        title: "Bienvienido Administrador",
+        text: "Ingresando al sistema",
+        icon: "success",
+        //redireccionaria a la papgina del administrador
+      });
+      navegacion("/administrador");
     } else {
       Swal.fire({
         title: "Ocurrio un error",

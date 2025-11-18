@@ -1,7 +1,13 @@
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
-const Menu = () => {
+const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
+  const navegacion = useNavigate();
+  const logout = () => {
+    setUsuarioLogueado(false);
+    navegacion("/");
+  };
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -16,13 +22,20 @@ const Menu = () => {
             <NavLink className="nav-link" to={"/"}>
               Inicio
             </NavLink>
-            <NavLink className="nav-link" to={"/administrador"}>
-              Administrador
-            </NavLink>
-            <Button className="nav-link">Logout</Button>
-            <NavLink className="nav-link" to={"/login"}>
-              Login
-            </NavLink>
+            {usuarioLogueado ? (
+              <>
+                <NavLink className="nav-link" to={"/administrador"}>
+                  Administrador
+                </NavLink>
+                <Button className="nav-link" onClick={logout}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <NavLink className="nav-link" to={"/login"}>
+                Login
+              </NavLink>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
