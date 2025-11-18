@@ -1,21 +1,35 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
-const FormularioServicio = () => {
+const FormularioServicio = ({ titulo, crearServicio, editarServicio }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
+    if (titulo === "Crear servicio") {
+      //agrego la logica de crear
+      crearServicio(data);
+      Swal.fire({
+        title: "Servicio creado",
+        text: `El servicio '${data.servicio}' fue creado correctamente`,
+        icon: "success",
+      });
+      reset()
+    } else {
+      //agregar la logica para editar
+    }
   };
 
   return (
     <main className="container my-4">
-      <h1>Titulo</h1>
+      <h1>{titulo}</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Servicio</Form.Label>
