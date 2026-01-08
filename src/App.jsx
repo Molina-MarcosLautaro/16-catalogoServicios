@@ -26,7 +26,7 @@ function App() {
   },[servicios])
 
   const crearServicio = (nuevoServicio)=>{
-// le voy agregar un id
+  // le voy agregar un id
     nuevoServicio.id = crypto.randomUUID() //kdjfgh45-df454-dfjh34
     setServicios([...servicios, nuevoServicio])
   }
