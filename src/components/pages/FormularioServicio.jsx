@@ -133,9 +133,10 @@ const FormularioServicio = ({
             })}
           >
             <option value="">Seleccione una opcion</option>
-            <option value="Infusiones">Desarrollo Web</option>
-            <option value="Batidos">Backend & API</option>
-            <option value="dulce">Consultoría</option>
+            <option value="Desarrollo Web">Desarrollo Web</option>
+            <option value="Backend y API">Backend & API</option>
+            <option value="Consultoría">Consultoría</option>
+            <option value="Otros">Otros</option>
           </Form.Select>
           <Form.Text className="text-danger">
             {errors.categoria?.message}

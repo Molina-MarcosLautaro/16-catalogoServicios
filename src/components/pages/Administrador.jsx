@@ -2,19 +2,25 @@ import { Table } from "react-bootstrap";
 import ItemTabla from "../services/ItemTabla";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
-import { listarProductosApi } from "../../helper/queries";
+import { listarServiciosApi } from "../../helper/queries";
 
-const Administrador = () => {
+const Administrador = ({borrarServicio}) => {
   const [servicios, setServicios] = useState([]);
-  useEffect(() => {}, []);
+
+  useEffect(() => {
+    cargarServicios();
+  }, []);
 
   const cargarServicios = async () => {
-    const respuestaServicios = await listarProductosApi();
-    if (respuestaServicios && respuestaServicios.status=== 200) {
+    const respuestaServicios = await listarServiciosApi();
+    console.log(respuestaServicios);
+    if (respuestaServicios && respuestaServicios.status === 200) {
       const datos = await respuestaServicios.json();
       setServicios(datos);
-    }else {
-      alert('Ocurrio un error no se puede mostrar los productos de este momento')
+    } else {
+      alert(
+        "Ocurrio un error no se puede mostrar los productos en este momento"
+      );
     }
   };
 
@@ -41,6 +47,8 @@ const Administrador = () => {
               key={servicio._id}
               servicio={servicio}
               fila={indice + 1}
+              servicios={servicios}
+              setServicios={setServicios}
             ></ItemTabla>
           ))}
         </tbody>
