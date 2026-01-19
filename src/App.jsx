@@ -25,37 +25,6 @@ function App() {
     localStorage.setItem('serviciosKey', JSON.stringify(servicios))
   },[servicios])
 
-  const crearServicio = (nuevoServicio)=>{
-  // le voy agregar un id
-    nuevoServicio.id = crypto.randomUUID() //kdjfgh45-df454-dfjh34
-    setServicios([...servicios, nuevoServicio])
-  }
-
-  const editarServicio = (idServicio,servicioEditar) =>{
-    // buscar el objeto dentro del array que tiene tal id, y actualizar sus valores
-    const serviciosEditados = servicios.map((itemServicio)=>{
-      //buscar el objeto a editar
-       if(itemServicio.id === idServicio){
-         return {
-          ...itemServicio,
-          ...servicioEditar
-         }
-       }
-       return itemServicio 
-    })
-    setServicios(serviciosEditados)
-  }
-
-  const borrarServicio = (idServicio)=>{
-    const serviciosFiltrados = servicios.filter((itemServicio)=> itemServicio.id !== idServicio)
-    setServicios(serviciosFiltrados)
-  }
-
-  const buscarServicio = (idServicio) => {
-    const servicioEncontrado =  servicios.find((item) => item.id === idServicio);
-    return servicioEncontrado;
-  }
-
   return (
     <BrowserRouter>
       <Menu
@@ -77,15 +46,15 @@ function App() {
         >
           <Route
             index
-            element={<Administrador servicios={servicios} borrarServicio={borrarServicio}></Administrador>}
+            element={<Administrador></Administrador>}
           />
           <Route
             path="crear"
-            element={<FormularioServicio titulo={'Crear servicio'} crearServicio={crearServicio}></FormularioServicio>}
+            element={<FormularioServicio titulo={'Crear servicio'}></FormularioServicio>}
           />
           <Route
             path="editar/:id"
-            element={<FormularioServicio titulo={'Editar servicio'} editarServicio={editarServicio} buscarServicio={buscarServicio}></FormularioServicio>}
+            element={<FormularioServicio titulo={'Editar servicio'}></FormularioServicio>}
           />
         </Route>
 

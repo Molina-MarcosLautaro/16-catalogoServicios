@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import { listarServiciosApi } from "../../helper/queries";
 
-const Administrador = ({borrarServicio}) => {
+const Administrador = () => {
   const [servicios, setServicios] = useState([]);
 
   useEffect(() => {
