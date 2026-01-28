@@ -4,7 +4,11 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
-import { buscarServicioApi, crearServicioApi, editarServicioApi } from "../../helper/queries";
+import {
+  buscarServicioApi,
+  crearServicioApi,
+  editarServicioApi,
+} from "../../helpers/queries";
 
 const FormularioServicio = ({ titulo }) => {
   const {
@@ -60,16 +64,16 @@ const FormularioServicio = ({ titulo }) => {
       }
     } else {
       //agregar la logica para editar
-      const respuestaEditarServicio = await editarServicioApi(data, id)
-      if(respuestaEditarServicio && respuestaEditarServicio.status === 200){
+      const respuestaEditarServicio = await editarServicioApi(data, id);
+      if (respuestaEditarServicio && respuestaEditarServicio.status === 200) {
         Swal.fire({
           title: "Servicio editado",
           text: `El servicio '${data.servicio}' fue editado correctamente`,
           icon: "success",
         });
         navegacion("/administrador");
-      }else{
-         Swal.fire({
+      } else {
+        Swal.fire({
           title: "Ocurrio un error",
           text: `El servicio '${data.servicio}' no pudo ser editado. Intenta nuevamente en unos minutos`,
           icon: "error",

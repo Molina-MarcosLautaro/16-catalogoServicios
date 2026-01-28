@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
-import { borrarServicioApi } from "../../helper/queries";
+import { borrarServicioApi } from "../../helpers/queries";
 
 const ItemTabla = ({ servicio, fila, servicios, setServicios }) => {
   const eliminarServicio = () => {

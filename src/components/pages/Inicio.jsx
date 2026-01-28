@@ -1,7 +1,7 @@
 import { Row } from "react-bootstrap";
 import CardServicio from "../services/CardServicio";
 import { useEffect, useState } from "react";
-import { listarServiciosApi } from "../../helper/queries";
+import { listarServiciosApi } from "../../helpers/queries";
 
 const Inicio = () => {
   const [servicios, setServicios] = useState([]);
@@ -17,7 +17,7 @@ const Inicio = () => {
       setServicios(datos);
     } else {
       alert(
-        "Ocurrio un error no se puede mostrar los productos en este momento"
+        "Ocurrio un error no se puede mostrar los productos en este momento",
       );
     }
   };

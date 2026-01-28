@@ -2,7 +2,7 @@ import { Table } from "react-bootstrap";
 import ItemTabla from "../services/ItemTabla";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
-import { listarServiciosApi } from "../../helper/queries";
+import { listarServiciosApi } from "../../helpers/queries";
 
 const Administrador = () => {
   const [servicios, setServicios] = useState([]);
@@ -19,7 +19,7 @@ const Administrador = () => {
       setServicios(datos);
     } else {
       alert(
-        "Ocurrio un error no se puede mostrar los productos en este momento"
+        "Ocurrio un error no se puede mostrar los productos en este momento",
       );
     }
   };
