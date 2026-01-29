@@ -1,5 +1,5 @@
 const urlServicios =  import.meta.env.VITE_SERVICIO;
-const urlUsuarios = import.meta.env.VITE_USUARIO;
+const urlUsuarios = import.meta.env.VITE_USUARIO
 
 export const listarServiciosApi = async() =>{
     try {
@@ -9,6 +9,7 @@ export const listarServiciosApi = async() =>{
         console.error(error)
     }
 }
+
 export const crearServicioApi = async(servicio) =>{
     try {
         const respuesta = await fetch(urlServicios,{
@@ -28,10 +29,10 @@ export const crearServicioApi = async(servicio) =>{
 export const borrarServicioApi = async(id) =>{
     try {
         const respuesta = await fetch(urlServicios+`/${id}`,{
-            method: 'DELETE',   
-            headers: {
-                'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem('usuarioKey')).token}`
-            }     
+            method: 'DELETE', 
+             headers: {
+                 'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem('usuarioKey')).token}`
+             }       
         })
         return respuesta
     } catch (error) {
@@ -66,7 +67,7 @@ export const editarServicioApi = async(servicio, id) =>{
 
 export const login = async(usuario) =>{
     try {
-        const respuesta = await fetch(urlUsuarios + '/login',{
+        const respuesta = await fetch(urlUsuarios+'/login',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

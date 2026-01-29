@@ -14,17 +14,16 @@ function App() {
   const usuarioSessionStorage =
     JSON.parse(sessionStorage.getItem("usuarioKey")) || {};
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuarioSessionStorage);
-  const serviciosLocalStorage =
-    JSON.parse(localStorage.getItem("serviciosKey")) || [];
-  const [servicios, setServicios] = useState(serviciosLocalStorage);
+  const serviciosLocalStorage = JSON.parse(localStorage.getItem('serviciosKey')) || []
+  const [servicios, setServicios] = useState(serviciosLocalStorage)
 
   useEffect(() => {
     sessionStorage.setItem("usuarioKey", JSON.stringify(usuarioLogueado));
   }, [usuarioLogueado]);
 
-  useEffect(() => {
-    localStorage.setItem("serviciosKey", JSON.stringify(servicios));
-  }, [servicios]);
+  useEffect(()=>{
+    localStorage.setItem('serviciosKey', JSON.stringify(servicios))
+  },[servicios])
 
   return (
     <BrowserRouter>
@@ -38,29 +37,24 @@ function App() {
           path="/login"
           element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}
         />
-        <Route path="/detalle" element={<DetalleServicio></DetalleServicio>} />
+        <Route path="/detalle/:id" element={<DetalleServicio></DetalleServicio>} />
         <Route
           path="/administrador"
           element={
             <ProtectorRutas usuarioLogueado={usuarioLogueado}></ProtectorRutas>
           }
         >
-          <Route index element={<Administrador></Administrador>} />
+          <Route
+            index
+            element={<Administrador></Administrador>}
+          />
           <Route
             path="crear"
-            element={
-              <FormularioServicio
-                titulo={"Crear servicio"}
-              ></FormularioServicio>
-            }
+            element={<FormularioServicio titulo={'Crear servicio'}></FormularioServicio>}
           />
           <Route
             path="editar/:id"
-            element={
-              <FormularioServicio
-                titulo={"Editar servicio"}
-              ></FormularioServicio>
-            }
+            element={<FormularioServicio titulo={'Editar servicio'}></FormularioServicio>}
           />
         </Route>
 
